@@ -1,0 +1,33 @@
+{
+  "name": "vue-corator",
+  "version": "1.0.0",
+  "description": "this is TypeScript Vue decorator.",
+  "main": "lib/vue-corator.d.ts",
+  "module": "lib/vue-corator.js",
+  "scripts": {
+    "build": "tsc -p ./src/tsconfig.json"
+  },
+  "keywords": [
+    "vue",
+    "typescript",
+    "decorator"
+  ],
+  "author": { "name": "joon610", "email": "jdj610@gmail.com"},
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "typings": "./lib/vue-corator.d.ts",
+  "devDependencies": {
+    "@types/node": "^12.0.8",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joon610/vue-corator.git"
+  }
+}

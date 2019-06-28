@@ -1,0 +1,7 @@
+lib
+node_modules
+src/*.js
+tests/*.spec.js
+package-lock.json
+.vscode/setting.json
+.idea
