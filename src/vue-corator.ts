@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { createDecorator } from 'vue-class-component';
-export function Style(refKey: string) {
+export function Style(refKey?: string) {
     return createDecorator((options, key) => {
         options.computed = options.computed || {};
         options.computed[key] = {
