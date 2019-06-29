@@ -8,7 +8,7 @@ MIT License
 ## Install
 
 ```bash
-npm i -S vue-property-decorator
+npm i -S vue-corator
 ```
 
 ## Usage

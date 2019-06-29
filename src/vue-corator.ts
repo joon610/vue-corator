@@ -12,4 +12,3 @@ export function Style(refKey?: string) {
         };
       });
   }
-
