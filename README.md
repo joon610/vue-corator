@@ -28,10 +28,11 @@ export default class YourComponent extends Vue {
 }
 ```
 is
+
 ```ts
 this.$refs.yourRefName.style
 cosnt customName = this.$refs.Refname.style
 
 ```
 
-don't use StyleBinding 
+you can change element style in Typescript. don't need style binding

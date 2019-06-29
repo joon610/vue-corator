@@ -1,6 +1,6 @@
 {
   "name": "vue-corator",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "this is TypeScript Vue decorator.",
   "main": "lib/vue-corator.d.ts",
   "module": "lib/vue-corator.js",
@@ -12,7 +12,10 @@
     "typescript",
     "decorator"
   ],
-  "author": { "name": "joon610", "email": "jdj610@gmail.com"},
+  "author": {
+    "name": "joon610",
+    "email": "jdj610@gmail.com"
+  },
   "license": "MIT",
   "files": [
     "lib"
