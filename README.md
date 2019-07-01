@@ -31,7 +31,6 @@ export default class YourComponent extends Vue {
 is equal
 
 ```ts
-import { NextStick } from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
 
@@ -57,7 +56,6 @@ export default class YourComponent extends Vue {
 is equal
 
 ```ts
-import { NextStick } from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
 
