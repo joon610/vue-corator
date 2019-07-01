@@ -14,10 +14,11 @@ npm i -S vue-corator
 ## Usage
 
 - [`@Style`](#Style)
+- [`@NextStick`](#NextStick)
 
 ## See also
 
-### <a id="Style"></a> `@Style(refKey: string)` decorator
+### <a id="Style"></a> `@Style(refKey?: string)` decorator
 
 ```ts
 import {Style} from 'vue-corator'
@@ -27,12 +28,42 @@ export default class YourComponent extends Vue {
   @Style('Refname') customName: CSSStyleDeclaration
 }
 ```
-is
+is equal
 
 ```ts
-this.$refs.yourRefName.style
-cosnt customName = this.$refs.Refname.style
+import { NextStick } from 'vue-corator'
+@Component
+export default class YourComponent extends Vue {
+
+  private mounted() {
+    this.$refs.yourRefName.style;
+    const customName = this.$refs.Refname.style;
+  }
+}
 
 ```
+### <a id="NextStick"></a> `@NextStick()` decorator
 
-you can change element style in Typescript. don't need style binding
+```ts
+import { NextStick } from 'vue-corator'
+@Component
+export default class YourComponent extends Vue {
+  @NextStick()
+  private methodName(){
+    this.method1();
+  }
+}
+```
+is equal
+
+```ts
+import { NextStick } from 'vue-corator'
+@Component
+export default class YourComponent extends Vue {
+
+  private created() {
+    this.$nexttick(()=>{
+      this.method1();
+    })
+  }
+}

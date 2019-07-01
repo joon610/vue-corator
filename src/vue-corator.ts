@@ -12,3 +12,16 @@ export function Style(refKey?: string) {
         };
       });
   }
+
+export function NextStick() {
+  return (target: Vue, key: string, descriptor: any) => {
+    const original = descriptor.value;
+    descriptor.value = () => {
+        Vue.nextTick(() => {
+            original();
+        });
+      };
+    const returnValue: any =  descriptor.value;
+    return descriptor.value();
+  };
+}
