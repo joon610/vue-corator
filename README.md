@@ -14,7 +14,7 @@ npm i -S vue-corator
 ## Usage
 
 - [`@Style`](#Style)
-- [`@NextStick`](#NextStick)
+- [`@NextTick`](#NextTick)
 
 ## See also
 
@@ -31,6 +31,7 @@ export default class YourComponent extends Vue {
 is equal
 
 ```ts
+import { NextTick } from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
 
@@ -39,15 +40,46 @@ export default class YourComponent extends Vue {
     const customName = this.$refs.Refname.style;
   }
 }
-
 ```
-### <a id="NextStick"></a> `@NextStick()` decorator
+### How to use
+```html
+<template>
+<div>
+　　　//refを登録
+    <div class="test-box" ref="testBox"></div>
+    <button class="green-button" @click="onclickGreen()">Green Button</button>
+    <button class="blue-button" @click="onclickBlue()">blue Button</button>
+</div>
+</template>
+
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Style } from '@/utils/StyleDeco';
+@Component
+export default class ComponentName extends Vue {
+    //作成したDecorator
+    @Style()　
+    private testBox!: CSSStyleDeclaration;
+
+    private onclickGreen() {
+        this.testBox.backgroundColor = 'green';
+    }
+    private onclickBlue() {
+        this.testBox.backgroundColor = 'blue';
+    }
+}
+</script>
+```
+![](/assets/style-decorator.gif)
+
+
+### <a id="NextTick"></a> `@NextTick()` decorator
 
 ```ts
-import { NextStick } from 'vue-corator'
+import { NextTick } from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
-  @NextStick()
+  @NextTick()
   private methodName(){
     this.method1();
   }
@@ -56,6 +88,7 @@ export default class YourComponent extends Vue {
 is equal
 
 ```ts
+import { NextTick } from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
 
