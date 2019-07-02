@@ -13,7 +13,7 @@ export function Style(refKey?: string) {
       });
   }
 
-export function NextStick() {
+export function NextTick() {
   return (target: Vue, key: string, descriptor: any) => {
     const original = descriptor.value;
     descriptor.value = () => {
