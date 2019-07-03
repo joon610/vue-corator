@@ -28,7 +28,7 @@ export default class YourComponent extends Vue {
   @Style('Refname') customName: CSSStyleDeclaration
 }
 ```
-is equal
+Is equivalent
 
 ```ts
 import { NextTick } from 'vue-corator'
@@ -85,7 +85,7 @@ export default class YourComponent extends Vue {
   }
 }
 ```
-is equal
+Is equivalent
 
 ```ts
 import { NextTick } from 'vue-corator'
