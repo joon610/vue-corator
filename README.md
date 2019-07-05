@@ -15,6 +15,7 @@ npm i -S vue-corator
 
 - [`@Style`](#Style)
 - [`@NextTick`](#NextTick)
+- [`@UniqueId`](#UniqueId)
 
 ## See also
 
@@ -98,3 +99,32 @@ export default class YourComponent extends Vue {
     })
   }
 }
+```
+
+### <a id="UniqueId"></a> `@UniqueId(Key?: string)` decorator
+
+```ts
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { UniqueId } from '../utils/StyleDeco';
+@Component
+export default class YourComponent extends Vue {
+  @UniqueId() yourUniqueId!: string 
+  @UniqueId('customName') yourUniqueId!: string 
+}
+```
+Is equivalent
+
+```ts
+import { NextTick } from 'vue-corator'
+@Component
+export default class YourComponent extends Vue {
+
+  private yourUniqueId!: string;
+  private customName!: string;
+
+  private created() {
+    this.yourUniqueId = 'yourUniqueId' + this._uid;
+    this.yourUniqueId = 'customName' + this._uid;
+  }
+}
+```

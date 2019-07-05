@@ -25,3 +25,17 @@ export function NextTick() {
     return descriptor.value();
   };
 }
+
+
+export function UniqueId(key?: string) {
+  return createDecorator((options, k) => {
+      options.computed = options.computed || {};
+      options.computed[k] = {
+        cache: false,
+        get(this: Vue) {
+            // @ts-ignore
+          return [key || k] + '-' + this._uid;
+        },
+      };
+    });
+}
