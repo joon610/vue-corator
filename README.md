@@ -16,6 +16,7 @@ npm i -S vue-corator
 - [`@Style`](#Style)
 - [`@NextTick`](#NextTick)
 - [`@UniqueId`](#UniqueId)
+- [`@Sleep`](#Sleep)
 
 ## See also
 
@@ -125,6 +126,39 @@ export default class YourComponent extends Vue {
   private created() {
     this.yourUniqueId = 'yourUniqueId' + this._uid;
     this.yourUniqueId = 'customName' + this._uid;
+  }
+}
+```
+
+
+### <a id="Sleep"></a> `@Sleep(ms: number)` decorator
+
+```ts
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Sleep } from '../utils/StyleDeco';
+@Component
+export default class YourComponent extends Vue {
+
+  @Sleep(3000) //ms sec
+  private test() {
+    console.log('hello');
+  }
+}
+```
+Is equivalent
+
+```ts
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Sleep } from '../utils/StyleDeco';
+@Component
+export default class YourComponent extends Vue {
+
+  private create() {
+    setTimeout(test,3000)
+  }
+
+  private test() {
+    console.log('hello');
   }
 }
 ```

@@ -39,3 +39,15 @@ export function UniqueId(key?: string) {
       };
     });
 }
+
+
+export function Sleep(ms: number) {
+  return (target: Vue, key: string, descriptor: any) => {
+    const original = descriptor.value;
+    descriptor.value = () => {
+          setTimeout(original, ms);
+      };
+    const returnValue: any =  descriptor.value;
+    return descriptor.value();
+  };
+}
