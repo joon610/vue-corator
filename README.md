@@ -47,8 +47,28 @@ export default class YourComponent extends Vue {
               </ul>`;
     }
 }
+``` 
+#### you should setup 
+
+use Vue CLI3.0
+```js
+//vue.config.js
+module.exports ={
+    runtimeCompiler:true
+}
 ```
-you can make functional component! 
+``` js
+//webpack
+module.exports = {
+  // ...
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+    }
+  }
+}
+```
+See also: [Runtime + Compiler vs. Runtime only.](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only)
 
 
 ### <a id="Style"></a> `@Style(refKey?: string)` decorator

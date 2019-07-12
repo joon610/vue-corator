@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue from 'vue'
 import { createDecorator } from 'vue-class-component';
 export function Style(refKey?: string) {
     return createDecorator((options, key) => {
