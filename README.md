@@ -49,7 +49,7 @@ export default class YourComponent extends Vue {
 ``` 
 ### should be setup 
 ```js
-//if you use Vue CLI3.0 
+//if you use Vue CLI3.0
 //vue.config.js
 module.exports ={
     runtimeCompiler:true
