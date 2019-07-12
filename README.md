@@ -36,7 +36,6 @@ export default class YourComponent extends Vue {
 
     private data = ['hello', 'function render'];
 
-
     @Render('items', 'title')
     private good() {
       return `
@@ -48,15 +47,16 @@ export default class YourComponent extends Vue {
     }
 }
 ``` 
-#### you should setup 
+#### should be setup 
 
-use Vue CLI3.0
+if you use Vue CLI3.0
 ```js
 //vue.config.js
 module.exports ={
     runtimeCompiler:true
 }
 ```
+or
 ``` js
 //webpack
 module.exports = {
