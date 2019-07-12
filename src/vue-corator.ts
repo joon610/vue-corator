@@ -15,10 +15,10 @@ export function Style(refKey?: string) {
 
 export function NextTick() {
   return (target: Vue, key: string, descriptor: any) => {
-    const original = descriptor.value;
+    const method = descriptor.value;
     descriptor.value = () => {
         Vue.nextTick(() => {
-            original();
+            method();
         });
       };
     const returnValue: any =  descriptor.value;
