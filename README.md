@@ -13,12 +13,43 @@ npm i -S vue-corator
 
 ## Usage
 
+- [`@Render`](#Render)
 - [`@Style`](#Style)
 - [`@NextTick`](#NextTick)
 - [`@UniqueId`](#UniqueId)
-- [`@Sleep`](#Sleep)
 
 ## See also
+
+### <a id="Render"></a> `@Render(...props: string[])` decorator
+
+
+```html
+<template>
+  <good :items="data" title="hello world"></good>
+</template>
+```
+
+```ts
+import {Render} from 'vue-corator'
+@Component
+export default class YourComponent extends Vue {
+
+    private data = ['hello', 'function render'];
+
+
+    @Render('items', 'title')
+    private good() {
+      return `
+              <ul>
+              <li v-for="item in items">
+              {{ title }} {{ item }}
+              </li>
+              </ul>`;
+    }
+}
+```
+you can make functional component! 
+
 
 ### <a id="Style"></a> `@Style(refKey?: string)` decorator
 
@@ -126,39 +157,6 @@ export default class YourComponent extends Vue {
   private created() {
     this.yourUniqueId = 'yourUniqueId' + this._uid;
     this.yourUniqueId = 'customName' + this._uid;
-  }
-}
-```
-
-
-### <a id="Sleep"></a> `@Sleep(ms: number)` decorator
-
-```ts
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Sleep } from '../utils/StyleDeco';
-@Component
-export default class YourComponent extends Vue {
-
-  @Sleep(3000) //ms sec
-  private test() {
-    console.log('hello');
-  }
-}
-```
-Is equivalent
-
-```ts
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Sleep } from '../utils/StyleDeco';
-@Component
-export default class YourComponent extends Vue {
-
-  private create() {
-    setTimeout(test,3000)
-  }
-
-  private test() {
-    console.log('hello');
   }
 }
 ```

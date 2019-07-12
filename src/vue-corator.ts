@@ -40,14 +40,19 @@ export function UniqueId(key?: string) {
     });
 }
 
-
-export function Sleep(ms: number) {
+export function Render(...props: string[]) {
   return (target: Vue, key: string, descriptor: any) => {
-    const original = descriptor.value;
-    descriptor.value = () => {
-          setTimeout(original, ms);
-      };
-    const returnValue: any =  descriptor.value;
-    return descriptor.value();
+    const template = descriptor.value();
+    const compiledTemplate = Vue.compile(template);
+    const newComponent = {
+      props: props,
+      render(createElement: any) {
+        return compiledTemplate.render.call(this, createElement);
+      }
+    };
+    createDecorator((options, k) => {
+      options.components = options.components || {};
+      options.components[key] = newComponent;
+    })(target, key);
   };
 }
