@@ -40,7 +40,7 @@ export function UniqueId(key?: string) {
     });
 }
 
-export function Render() {
+export function Render(componentName:string) {
   return (target: Vue, key: string, descriptor: PropertyDescriptor) => {
     const method = descriptor.value;
     const compiledTemplate = Vue.compile(method());
@@ -57,7 +57,7 @@ export function Render() {
     };
     createDecorator((options, k) => {
       options.components = options.components || {};
-      options.components[key] = newComponent;
+      options.components[componentName||key] = newComponent;
     })(target, key);
   };
 }
