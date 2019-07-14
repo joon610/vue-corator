@@ -20,7 +20,7 @@ npm i -S vue-corator
 
 ## See also
 
-### <a id="Render"></a> `@Render(...props: string[])` decorator
+### <a id="Render"></a> `@Render()` decorator
 
 
 ```html
@@ -36,8 +36,8 @@ export default class YourComponent extends Vue {
 
     private data = ['hello', 'function render'];
 
-    @Render('items', 'title')
-    private good() {
+    @Render()
+    private good(itmes:any, title:any) {
       return `
               <ul>
               <li v-for="item in items">
