@@ -97,7 +97,6 @@ export default class YourComponent extends Vue {
 ```html
 <template>
 <div>
-　　　//refを登録
     <div class="test-box" ref="testBox"></div>
     <button class="green-button" @click="onclickGreen()">Green Button</button>
     <button class="blue-button" @click="onclickBlue()">blue Button</button>
@@ -109,7 +108,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Style } from '@/utils/StyleDeco';
 @Component
 export default class ComponentName extends Vue {
-    //作成したDecorator
     @Style()　
     private testBox!: CSSStyleDeclaration;
 
