@@ -25,7 +25,7 @@ npm i -S vue-corator
 
 ```html
 <template>
-  <good :items="data" title="hello world"></good>
+  <good :items="data" title="Vue corator"></good>
 </template>
 ```
 
@@ -34,16 +34,19 @@ import {Render} from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
 
-    private data = ['hello', 'function render'];
+    private data = ['hello', 'Functional Component'];
 
     @Render()
-    private good(items:any, title:any) {
-      return `
+    private good(items: any, title: any) {
+      return  `
+            <div>
+             <b> {{ title }} </b>
               <ul>
-              <li v-for="(item,index) in items" :key="index">
-              {{ title }} {{ item }}
-              </li>
-              </ul>`;
+                <li v-for="(item,index) in items" :key="index">
+                      {{ item }}
+                </li>
+              </ul>
+            </div>`;
     }
 }
 ``` 
