@@ -37,10 +37,10 @@ export default class YourComponent extends Vue {
     private data = ['hello', 'function render'];
 
     @Render()
-    private good(itmes:any, title:any) {
+    private good(items:any, title:any) {
       return `
               <ul>
-              <li v-for="item in items">
+              <li v-for="item in items :key="item.id"">
               {{ title }} {{ item }}
               </li>
               </ul>`;
