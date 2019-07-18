@@ -40,7 +40,7 @@ export default class YourComponent extends Vue {
     private good(items:any, title:any) {
       return `
               <ul>
-              <li v-for="item in items :key="item.id"">
+              <li v-for="(item,index) in items" :key="index">
               {{ title }} {{ item }}
               </li>
               </ul>`;
@@ -138,11 +138,9 @@ export default class YourComponent extends Vue {
 Is equivalent
 
 ```ts
-import { NextTick } from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
-
-  private created() {
+  private mounted() {
     this.$nexttick(()=>{
       this.method1();
     })
