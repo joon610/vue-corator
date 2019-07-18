@@ -40,14 +40,13 @@ export function UniqueId(key?: string) {
     });
 }
 
-export function Render(componentName:string) {
+export function Render(componentName?: string) {
   return (target: Vue, key: string, descriptor: PropertyDescriptor) => {
     const method = descriptor.value;
     const compiledTemplate = Vue.compile(method());
     const execParameta = /(?=\(([^)]*)\))(?=[^,]+)/g;
     const paramArray = execParameta.exec(method);
-    // @ts-ignore
-    const parameta = paramArray[1].replace(/\s*/g, ''); // remove empty
+    const parameta = paramArray !== null ? paramArray[1].replace(/\s*/g, '') : ''; // remove space
     const props = parameta.split(',');
     const newComponent = {
       props,
@@ -57,7 +56,7 @@ export function Render(componentName:string) {
     };
     createDecorator((options, k) => {
       options.components = options.components || {};
-      options.components[componentName||key] = newComponent;
+      options.components[componentName || key] = newComponent;
     })(target, key);
   };
 }

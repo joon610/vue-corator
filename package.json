@@ -1,6 +1,6 @@
 {
   "name": "vue-corator",
-  "version": "1.4.8",
+  "version": "1.4.10",
   "description": "this is TypeScript Vue decorator.",
   "main": "lib/vue-corator.d.ts",
   "module": "lib/vue-corator.js",
