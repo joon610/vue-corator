@@ -20,7 +20,7 @@ npm i -S vue-corator
 
 ## See also
 
-### <a id="Render"></a> `@Render()` decorator
+### <a id="Render"></a> `@Render(componentName?:string)` decorator
 
 
 ```html
