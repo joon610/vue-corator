@@ -14,9 +14,9 @@ npm i -S vue-corator
 ## Usage
 
 - [`@Render`](#Render)
-- [`@Style`](#Style)
+- [`@Style`](#Style)   'will be change name or remove
 - [`@NextTick`](#NextTick)
-- [`@UniqueId`](#UniqueId)
+- [`@ScopedId`](#ScopedId)
 
 ## See also
 
@@ -73,58 +73,38 @@ module.exports = {
 See also: [Runtime + Compiler vs. Runtime only.](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only)
 
 
-### <a id="Style"></a> `@Style(refKey?: string)` decorator
+### <a id="vStyle"></a> `@vStyle()` decorator
 
-```ts
-import {Style} from 'vue-corator'
-@Component
-export default class YourComponent extends Vue {
-  @Style() yourRefName: CSSStyleDeclaration
-  @Style('Refname') customName: CSSStyleDeclaration
-}
-```
-Is equivalent
-
-```ts
-import { NextTick } from 'vue-corator'
-@Component
-export default class YourComponent extends Vue {
-
-  private mounted() {
-    this.$refs.yourRefName.style;
-    const customName = this.$refs.Refname.style;
-  }
-}
-```
-### How to use
 ```html
 <template>
-<div>
-    <div class="test-box" ref="testBox"></div>
-    <button class="green-button" @click="onclickGreen()">Green Button</button>
-    <button class="blue-button" @click="onclickBlue()">blue Button</button>
-</div>
+  <div>
+    <styleTagName1>
+      .title { background:red }
+    </styleTagName1>   
+    <styleTagName2>
+       @import "./assets/test.css"
+    </styleTagName2> 
+  </div>
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Style } from '@/utils/StyleDeco';
-@Component
-export default class ComponentName extends Vue {
-    @Style()　
-    private testBox!: CSSStyleDeclaration;
-
-    private onclickGreen() {
-        this.testBox.backgroundColor = 'green';
-    }
-    private onclickBlue() {
-        this.testBox.backgroundColor = 'blue';
-    }
-}
-</script>
 ```
-![](/assets/style-decorator.gif)
+```ts
+import {vStyle} from 'vue-corator'
+@Component
+export default class YourComponent extends Vue {
 
+  @Style()
+  private styleTagName1() {
+    return `
+        .title { background:pink }
+    `;
+  }
+  @Style()
+  private styleTagName2() {
+    return '@import "./assets/test.css"';
+  }
+
+}
+```
 
 ### <a id="NextTick"></a> `@NextTick()` decorator
 
@@ -151,30 +131,15 @@ export default class YourComponent extends Vue {
 }
 ```
 
-### <a id="UniqueId"></a> `@UniqueId(Key?: string)` decorator
+### <a id="ScopedId"></a> `@ScopedId(Key?: string)` decorator
 
 ```ts
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { UniqueId } from '../utils/StyleDeco';
+import { ScopedId } from 'vue-corator';
 @Component
 export default class YourComponent extends Vue {
-  @UniqueId() yourUniqueId!: string 
-  @UniqueId('customName') yourUniqueId!: string 
+  @ScopedId() yourUniqueId!: string 
+  @ScopedId('customName') yourUniqueId!: string 
 }
 ```
-Is equivalent
-
-```ts
-import { NextTick } from 'vue-corator'
-@Component
-export default class YourComponent extends Vue {
-
-  private yourUniqueId!: string;
-  private customName!: string;
-
-  private created() {
-    this.yourUniqueId = 'yourUniqueId' + this._uid;
-    this.yourUniqueId = 'customName' + this._uid;
-  }
-}
-```
+you can get component  data-v-<hash> data

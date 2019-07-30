@@ -1,17 +1,24 @@
 import Vue from 'vue'
 import { createDecorator } from 'vue-class-component';
-export function Style(refKey?: string) {
-    return createDecorator((options, key) => {
-        options.computed = options.computed || {};
-        options.computed[key] = {
-          cache: false,
-          get(this: Vue) {
-              // @ts-ignore
-            return this.$refs[refKey || key].style;
-          },
-        };
-      });
-  }
+
+export function vStyle() {
+  return (target: Vue, key: string, descriptor: PropertyDescriptor) => {
+    const style = descriptor.value();
+    const newComponent = {
+      // @ts-ignore
+      render(createElement: any) {
+        return createElement('style',
+        {attrs: { type: 'text/css', lang: 'css'}},
+        // @ts-ignore
+        [this.$slots.default || style]);
+      }
+    };
+    createDecorator((options, k) => {
+        options.components = options.components || {};
+        options.components.vStyle = newComponent;
+    })(target, key);
+  };
+}
 
 export function NextTick() {
   return (target: Vue, key: string, descriptor: any) => {
@@ -24,20 +31,6 @@ export function NextTick() {
     const returnValue: any =  descriptor.value;
     return descriptor.value();
   };
-}
-
-
-export function UniqueId(key?: string) {
-  return createDecorator((options, k) => {
-      options.computed = options.computed || {};
-      options.computed[k] = {
-        cache: false,
-        get(this: Vue) {
-            // @ts-ignore
-          return [key || k] + '-' + this._uid;
-        },
-      };
-    });
 }
 
 export function Render(componentName?: string) {
@@ -60,3 +53,17 @@ export function Render(componentName?: string) {
     })(target, key);
   };
 }
+
+export function ScopedId(key?: string) {
+  return createDecorator((options, k) => {
+      options.computed = options.computed || {};
+      options.computed[k] = {
+        cache: false,
+        get(this: Vue) {
+            // @ts-ignore
+          return  this.$options._scopeId;
+        },
+      };
+    });
+}
+
