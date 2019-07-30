@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { createDecorator } from 'vue-class-component';
 
-export function vStyle() {
+export function Style() {
   return (target: Vue, key: string, descriptor: PropertyDescriptor) => {
     const style = descriptor.value();
     const newComponent = {
