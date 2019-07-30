@@ -14,7 +14,7 @@ npm i -S vue-corator
 ## Usage
 
 - [`@Render`](#Render)
-- [`@Style`](#Style)   'will be change name or remove
+- [`@Style`](#Style)   
 - [`@NextTick`](#NextTick)
 - [`@ScopedId`](#ScopedId)
 
@@ -138,8 +138,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { ScopedId } from 'vue-corator';
 @Component
 export default class YourComponent extends Vue {
-  @ScopedId() yourUniqueId!: string 
-  @ScopedId('customName') yourUniqueId!: string 
+  @ScopedId() scopedId!: string      //returns component Id like 'data-v-xxxxx'
+  @ScopedId('customName') scopedId!: string   
 }
 ```
-you can get component  data-v-<hash> data
+//returns component Id like 'data-v-xxxxx'
