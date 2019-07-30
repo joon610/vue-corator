@@ -73,7 +73,7 @@ module.exports = {
 See also: [Runtime + Compiler vs. Runtime only.](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only)
 
 
-### <a id="vStyle"></a> `@vStyle()` decorator
+### <a id="Style"></a> `@Style()` decorator
 
 ```html
 <template>
