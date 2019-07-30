@@ -88,7 +88,7 @@ See also: [Runtime + Compiler vs. Runtime only.](https://vuejs.org/v2/guide/inst
 </template>
 ```
 ```ts
-import {vStyle} from 'vue-corator'
+import {Style} from 'vue-corator'
 @Component
 export default class YourComponent extends Vue {
 
@@ -142,4 +142,4 @@ export default class YourComponent extends Vue {
   @ScopedId('customName') scopedId!: string   
 }
 ```
-//returns component Id like 'data-v-xxxxx'
+returns component Id like 'data-v-xxxxx'
