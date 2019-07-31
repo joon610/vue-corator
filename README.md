@@ -87,6 +87,19 @@ See also: [Runtime + Compiler vs. Runtime only.](https://vuejs.org/v2/guide/inst
   </div>
 </template>
 ```
+or
+
+```html
+<template>
+  <div>
+    <styleTagName1>
+    </styleTagName1>   
+    <styleTagName2>
+    </styleTagName2> 
+  </div>
+</template>
+```
+
 ```ts
 import {Style} from 'vue-corator'
 @Component
