@@ -15,9 +15,9 @@ export function Style() {
         };
         createDecorator((options, k) => {
             options.components = options.components || {};
-            options.components[k] = newComponent;
+            options.components[key] = newComponent;
         })(target, key);
-    };
+  };
 }
 
 export function NextTick() {
