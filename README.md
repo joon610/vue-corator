@@ -152,7 +152,6 @@ import { ScopedId } from 'vue-corator';
 @Component
 export default class YourComponent extends Vue {
   @ScopedId() scopedId!: string      //returns component Id like 'data-v-xxxxx'
-  @ScopedId('customName') scopedId!: string   
 }
 ```
 returns component Id like 'data-v-xxxxx'
