@@ -1,6 +1,18 @@
 import Vue from 'vue'
 import { createDecorator } from 'vue-class-component';
 
+export function Super(component: any) {
+    return createDecorator((options, k) => {
+      options.computed = options.computed || {};
+      options.computed[k] = {
+        cache: false,
+        get(this: Vue) {
+            return new component();
+        },
+      };
+    });
+}
+
 export function Style() {
     return (target: Vue, key: string, descriptor: PropertyDescriptor) => {
         const style = descriptor.value();

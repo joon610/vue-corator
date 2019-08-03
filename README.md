@@ -11,12 +11,36 @@ MIT License
 npm i -S vue-corator
 ```
 
+Vue.config.js
+```js
+//if you use Vue CLI3.0
+//vue.config.js
+module.exports ={
+    runtimeCompiler:true
+}
+```
+or
+
+webpack.config.js
+``` js
+//webpack
+module.exports = {
+  // ...
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+    }
+  }
+}
+```
+
 ## Usage
 
 - [`@Render`](#Render)
 - [`@Style`](#Style)   
 - [`@NextTick`](#NextTick)
 - [`@ScopedId`](#ScopedId)
+- [`@Super`](#Super)
 
 ## See also
 
@@ -50,26 +74,7 @@ export default class YourComponent extends Vue {
     }
 }
 ``` 
-### should be setup 
-```js
-//if you use Vue CLI3.0
-//vue.config.js
-module.exports ={
-    runtimeCompiler:true
-}
-```
-or
-``` js
-//webpack
-module.exports = {
-  // ...
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
-    }
-  }
-}
-```
+
 See also: [Runtime + Compiler vs. Runtime only.](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only)
 
 
@@ -155,3 +160,41 @@ export default class YourComponent extends Vue {
 }
 ```
 returns component Id like 'data-v-xxxxx'
+
+
+
+### <a id="Super"></a> `@Super(component: any)` decorator
+
+```ts
+import { Component, Prop, Vue } from 'vue-property-decorator';
+@Component
+export default class Parent extends Vue {
+
+  private father(){
+      console.log('father')
+  }
+}
+```
+
+```ts
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Super } from 'vue-corator';
+import Parent from './parent.vue'
+@Component
+export default class Child extends Parent {
+  @Super(Parent) super!: any      //returns component Id like 'data-v-xxxxx'
+
+  private father(){
+      console.log('childs father')
+  }
+
+  private mounted(){
+    console.log(this.father());
+    console.log(this.super.father());
+  }
+}
+```
+```log
+  $ childs father
+  $ father
+```
