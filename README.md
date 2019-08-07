@@ -182,7 +182,7 @@ import { Super } from 'vue-corator';
 import Parent from './parent.vue'
 @Component
 export default class Child extends Parent {
-  @Super(Parent) super!: any      //returns component Id like 'data-v-xxxxx'
+  @Super(Parent) super!: any  
 
   private father(){
       console.log('childs father')
