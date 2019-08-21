@@ -15,22 +15,24 @@ export function Super(component: any) {
 
 export function Style() {
     return (target: Vue, key: string, descriptor: PropertyDescriptor) => {
-        const style = descriptor.value();
+      const style = descriptor.value();
+      createDecorator((options, k) => {
         const newComponent = {
-            // @ts-ignore
-            render(createElement: any) {
-                return createElement('style',
-                    { attrs: { type: 'text/css', lang: 'css' } },
-                    // @ts-ignore
-                    [this.$slots.default || style]);
-            }
+          // @ts-ignore
+          render(createElement: any) {
+              // @ts-ignore
+            const styleScoped = style.replace(/{./gi, '[' + options._scopeId + '] {');
+            return createElement('style',
+                  { attrs: { type: 'text/css', lang: 'css'} },
+                  // @ts-ignore
+                  [this.$slots.default || styleScoped ]);
+          }
         };
-        createDecorator((options, k) => {
-            options.components = options.components || {};
-            options.components[key] = newComponent;
-        })(target, key);
-  };
-}
+        options.components = options.components || {};
+        options.components[key] = newComponent;
+      })(target, key);
+    };
+  }
 
 export function NextTick() {
     return (target: Vue, key: string, descriptor: any) => {

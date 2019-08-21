@@ -1,6 +1,10 @@
 # Vue Corator
 
 
+## Update
+- [x] @style: changed global to scoped  2019/08/22
+
+
 ## License
 
 MIT License
@@ -84,23 +88,8 @@ See also: [Runtime + Compiler vs. Runtime only.](https://vuejs.org/v2/guide/inst
 <template>
   <div>
     <styleTagName1>
-      .title { background:red }
+      .title { background:red }    // .title [data-v-<hash>] {background:red}
     </styleTagName1>   
-    <styleTagName2>
-       @import "./assets/test.css"
-    </styleTagName2> 
-  </div>
-</template>
-```
-or
-
-```html
-<template>
-  <div>
-    <styleTagName1>
-    </styleTagName1>   
-    <styleTagName2>
-    </styleTagName2> 
   </div>
 </template>
 ```
@@ -116,11 +105,6 @@ export default class YourComponent extends Vue {
         .title { background:pink }
     `;
   }
-  @Style()
-  private styleTagName2() {
-    return '@import "./assets/test.css"';
-  }
-
 }
 ```
 
