@@ -2,7 +2,7 @@
 
 
 ## Update
-- [x] @style: changed global to scoped  2019/08/22
+- [x] @Style: Style tag changed global to scoped  2019/08/22
 
 
 ## License
