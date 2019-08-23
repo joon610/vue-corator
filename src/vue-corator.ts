@@ -57,6 +57,7 @@ export function Render(componentName?: string) {
         const props = parameta.split(',');
         const newComponent = {
             props,
+            functional: true,
             render(createElement: any) {
                 return compiledTemplate.render.call(this, createElement);
             }
@@ -66,8 +67,8 @@ export function Render(componentName?: string) {
             options.components[componentName || key] = newComponent;
         })(target, key);
     };
-}
-
+  }
+  
 export function ScopedId(key?: string) {
     return createDecorator((options, k) => {
         options.computed = options.computed || {};
