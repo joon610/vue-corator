@@ -2,6 +2,7 @@
 
 
 ## Update
+- [x] @Render: add functional atturibute in component  2019/08/23
 - [x] @Style: Style tag changed global to scoped  2019/08/22
 
 
